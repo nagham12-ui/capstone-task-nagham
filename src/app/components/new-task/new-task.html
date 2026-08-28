@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" class="new-task-form">
+  <input
+    type="text"
+    [(ngModel)]="title"
+    name="title"
+    placeholder="Task title..."
+  />
+
+  <input type="date" [(ngModel)]="dueDate" name="dueDate" />
+
+  <select [(ngModel)]="priority" name="priority">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+
+  <input
+    type="text"
+    [(ngModel)]="category"
+    name="category"
+    placeholder="Category..."
+  />
+
+  <button type="submit" [disabled]="!title.trim()">Add Task</button>
+</form>

@@ -1,0 +1,38 @@
+<div class="task-detail-container">
+  <a routerLink="/" class="back-link">← Back to Task List</a>
+
+  @if (task) {
+    <div class="detail-card">
+      @if (!isEditing) {
+        <h2>{{ task.title }}</h2>
+        <p><strong>Due Date:</strong> {{ task.dueDate }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+        <p><strong>Category:</strong> {{ task.category }}</p>
+        <p><strong>Status:</strong> {{ task.completed ? 'Completed' : 'Pending' }}</p>
+
+        <div class="actions">
+          <button class="edit-btn" (click)="toggleEdit()">Edit</button>
+          <button class="delete-btn" (click)="onDelete()">Delete</button>
+        </div>
+      } @else {
+        <h3>Edit Task</h3>
+        <label>Title:</label>
+        <input [(ngModel)]="task.title" placeholder="Title" />
+
+        <label>Priority:</label>
+        <select [(ngModel)]="task.priority">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <div class="actions">
+          <button class="save-btn" (click)="saveEdit()">Save</button>
+          <button class="cancel-btn" (click)="toggleEdit()">Cancel</button>
+        </div>
+      }
+    </div>
+  } @else {
+    <p>Task not found!</p>
+  }
+</div>

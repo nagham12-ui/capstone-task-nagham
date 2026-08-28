@@ -1,0 +1,15 @@
+<div class="task-row" [class.completed]="task.completed">
+  <input
+    type="checkbox"
+    [checked]="task.completed"
+    (change)="toggled.emit(task.id)"
+  />
+
+  <a [routerLink]="['/tasks', task.id]" class="task-title">{{ task.title }}</a>
+
+  <span class="task-date">
+    {{ task.dueDate | date }} · {{ task.dueDate | daysUntilDue }}
+  </span>
+
+  <button class="delete-btn" (click)="deleted.emit(task.id)">Delete</button>
+</div>

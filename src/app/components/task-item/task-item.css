@@ -1,0 +1,33 @@
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.task-title {
+  flex-grow: 1;
+  text-decoration: none;
+  color: #d67bb9;
+  font-weight: 500;
+}
+
+.task-row.completed .task-title {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+.task-date {
+  font-size: 13px;
+  color: #718096;
+}
+
+.delete-btn {
+  background-color: #a41976;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

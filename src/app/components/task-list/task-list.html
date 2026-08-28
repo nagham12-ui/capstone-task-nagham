@@ -1,0 +1,34 @@
+<div class="task-list-container">
+  <app-task-stats [tasks]="tasks"></app-task-stats>
+
+  <app-new-task (added)="onTaskAdded($event)"></app-new-task>
+
+  <div class="controls-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search tasks..."
+    />
+
+    <select [(ngModel)]="sortBy">
+      <option value="dueDate">Sort by Due Date</option>
+      <option value="priority">Sort by Priority</option>
+    </select>
+
+    <button (click)="toggleHideCompleted()">
+      {{ hideCompleted ? 'Show Completed' : 'Hide Completed' }}
+    </button>
+  </div>
+
+  <div class="tasks-wrapper">
+    @for (task of filteredTasks; track task.id) {
+      <app-task-item
+        [task]="task"
+        (toggled)="onTaskToggled($event)"
+        (deleted)="onTaskDeleted($event)"
+      ></app-task-item>
+    } @empty {
+      <p class="empty-state">No tasks match your search.</p>
+    }
+  </div>
+</div>
